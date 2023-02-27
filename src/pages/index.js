@@ -13,7 +13,7 @@ import {
   servicesContent,
   sliderContent,
 } from "@/constants/const";
-
+import Link from "next/link";
 function App() {
   useEffect(() => {
     Aos.init({ duration: 2000 });

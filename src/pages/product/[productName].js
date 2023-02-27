@@ -2,7 +2,7 @@ import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
 import { productContent } from "@/constants/const";
 import Aos from "aos";
-import { ProductJsonLd } from "next-seo";
+import { NextSeo, ProductJsonLd } from "next-seo";
 import Head from "next/head";
 import { useEffect } from "react";
 
@@ -43,9 +43,24 @@ const ProductDetails = ({ data }) => {
       </Head>
       <ProductJsonLd
         productName={data?.heading}
-        images={[image]}
+        images={[image.src]}
         brand={data?.brand}
         description={data?.description}
+      />
+      <NextSeo
+        openGraph={{
+          title: data?.heading,
+          description: data?.description,
+          type: "product",
+          images: [
+            {
+              url: image.src,
+              width: 850,
+              height: 650,
+              alt: data?.heading,
+            },
+          ],
+        }}
       />
       <Navbar />
       <section id="services" className="bg-blue-100 md:py-24">

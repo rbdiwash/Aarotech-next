@@ -54,7 +54,7 @@ const ProductDetails = ({ data }) => {
           type: "product",
           images: [
             {
-              url: `https://www.aarotech-qatar.com/${image.src}`,
+              url: `https://www.aarotech-qatar.com${image.src}`,
               width: 850,
               height: 650,
               alt: data?.heading,

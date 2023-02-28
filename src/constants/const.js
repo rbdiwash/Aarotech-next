@@ -97,9 +97,9 @@ export const productContent = [
   {
     heading: "GI Conduit & Accessories",
     image: gi,
-    brand: "JINDAL",
+    brand: "BURN/LANRIC/COPARO",
     description:
-      "The G.I. Sheet is a metal sheet coated with protective metallic and organic coatings that prevents rust. This is commonly used in automotive, wind, and solar industries. Standard Size is Roll or pcs 4x8ft and available in many thickness .",
+      "GI conduits are generally used for cable and wire systems because of their strong ability to tolerate many twists and bends. Overall, GI conduits improve the ability of cables and wire systems to withstand large amounts of weight and longitudinal stress with little distortion or breakage.",
   },
   {
     heading: "PVC Conduit & Accessories",

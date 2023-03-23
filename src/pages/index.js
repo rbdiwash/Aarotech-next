@@ -14,6 +14,16 @@ import {
   sliderContent,
 } from "@/constants/const";
 import Link from "next/link";
+import { Fragment, useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 function App() {
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -27,7 +37,10 @@ function App() {
     slidesToScroll: 1,
     infinite: true,
   };
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState();
 
+  const handleOpen = () => setOpen(!open);
   return (
     <div>
       <Head>
@@ -152,9 +165,13 @@ function App() {
           <div className="flex flex-wrap">
             {productContent.map((item, index) => (
               <a
-                href={`/product/${item?.heading.replace(/\s/g, "")}`}
+                // href={`/product/${item?.heading.replace(/\s/g, "")}`}
                 className="w-full sm:w-1/2 md:w-1/3 lg:w-1/6"
                 key={index}
+                onClick={() => {
+                  handleOpen();
+                  setSelected(item);
+                }}
               >
                 <div className="m-4 " data-aos="fade-up" data-aos-delay="200">
                   <div className="flex flex-col items-start justify-between icon rounded-lg shadow-lg p-4 min-h-[250px] cursor-pointer transform transition duration-500 hover:scale-105">
@@ -172,6 +189,78 @@ function App() {
           </div>
         </div>
       </section>
+      <Dialog
+        open={open}
+        handler={handleOpen}
+        size={"lg"}
+        className="w-full max-w-full lg:max-w-3/5  mx-2 md:mx-0"
+      >
+        <DialogHeader className="justify-between">
+          <Typography variant="h5" color="blue-gray">
+            {selected?.heading}
+          </Typography>
+          <IconButton
+            color="blue-gray"
+            size="sm"
+            variant="text"
+            onClick={handleOpen}
+          >
+            X
+          </IconButton>{" "}
+        </DialogHeader>
+        <DialogBody divider className="p-0">
+          <section id="services" className="bg-blue-100 md:py-24 px-0 lg:px-12">
+            <div className="container py-10">
+              <div className="flex  items-center justify-between flex-wrap">
+                <div className="w-full lg:w-1/2">
+                  <div className="mb-5 lg:mb-0">
+                    <h2
+                      className="md:text-4xl text-2xl mb-2  wow fadeInDown primary"
+                      data-wow-delay="0.3s"
+                    >
+                      {selected?.heading}
+                    </h2>
+                    {selected?.brand && (
+                      <p className="text-gray-500 py-4 text-2xl">
+                        Brand: {selected?.brand || "-"}
+                      </p>
+                    )}
+                    <div className="flex flex-wrap">
+                      <div className="w-full">
+                        <div className="lg:mr-3 lg:pr-6 text-lg text-justify text-gray-600">
+                          {selected?.description}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full lg:w-1/2">
+                  <div
+                    className="mx-3  wow fadeInRight cursor-pointer hover:scale-105 transform transition duration-500"
+                    data-wow-delay="0.3s"
+                  >
+                    <img
+                      src={selected?.image?.src}
+                      alt=""
+                      className="rounded-lg shadow-lg max-h-[700px]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>{" "}
+          </section>
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={handleOpen}
+            className="mr-1 border rounded-lg"
+          >
+            <span>Close</span>
+          </Button>
+        </DialogFooter>
+      </Dialog>
       <div id="about" className="bg-blue-100 py-24">
         <About />
       </div>

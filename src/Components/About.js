@@ -6,6 +6,9 @@ const About = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+  const yearsCount = new Date().getFullYear() - 2009;
+
   return (
     <>
       <div className="container">
@@ -33,14 +36,15 @@ const About = () => {
                 <div className="w-full">
                   <div className="mr-3 pr-6 text-lg text-justify text-gray-600">
                     AARO TECH TRADING & CONT W.L.L. has been established by the
-                    good team who has more then 14 years experience in qatar in
-                    various fields of trading, building materials & MEP
+                    good team who has more then {yearsCount} years experience in
+                    qatar in various fields of trading, building materials & MEP
                     maintenance / Civil Fit-outs works. <br /> <br />
-                    During these 14 years, we earned better experience of up &
-                    down market level & different kind of new ethics & latest
-                    technologies in all the above fields. The aim of AARO TECH
-                    TRADING & CONT. W.L.L is to give better quality services and
-                    fulfill client requirements with reasonable profit
+                    During these {yearsCount} years, we earned better experience
+                    of up & down market level & different kind of new ethics &
+                    latest technologies in all the above fields. The aim of AARO
+                    TECH TRADING & CONT. W.L.L is to give better quality
+                    services and fulfill client requirements with reasonable
+                    profit
                   </div>
                 </div>
               </div>

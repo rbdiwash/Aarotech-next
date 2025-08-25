@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import about from "../../public/assets/img/about.jpg";
 import { useEffect } from "react";
 import Aos from "aos";
@@ -8,6 +8,7 @@ const About = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
+  const [showISO, setShowISO] = useState(false);
   const yearsCount = new Date().getFullYear() - 2009;
 
   return (
@@ -194,6 +195,29 @@ const About = () => {
                 </span>
               </div>
             </div>
+
+            {/* ISO Certificate Button */}
+            <div className="mt-8">
+              <button
+                onClick={() => setShowISO(true)}
+                className="inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:btn-hover transition-colors duration-300 shadow-lg hover:shadow-xl"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                  ></path>
+                </svg>
+                View ISO Certificate
+              </button>
+            </div>
           </div>
 
           {/* Image Section */}
@@ -291,6 +315,64 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      {/* ISO Certificate Modal */}
+      {showISO && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">
+                  ISO Certificate
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowISO(false)}
+                className="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors duration-300"
+              >
+                <svg
+                  className="w-5 h-5 text-gray-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            {/* PDF Viewer */}
+            <div className=" h-[calc(90vh-120px)]">
+              <iframe
+                src="/assets/files/ISO.pdf"
+                className="w-full h-full rounded-lg border border-gray-200"
+                title="ISO Certificate"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

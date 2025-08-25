@@ -34,7 +34,7 @@ import trading1 from "../../public/assets/img/trading1.png";
 export const sliderContent = [
   {
     heading: "Building Materials",
-    content: "All kind of Building Materials",
+    // content: "All kind of Building Materials",
     image: slider4,
   },
   {

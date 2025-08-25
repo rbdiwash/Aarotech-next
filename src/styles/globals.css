@@ -119,14 +119,19 @@ a {
   .primary {
     @apply text-[#ec1f24];
   }
+
+  .bg-primary {
+    @apply bg-[#ec1f24];
+  }
+
   .btn {
-    @apply text-white bg-[#ec1f24] px-10 py-3 rounded-full duration-300 cursor-pointer;
+    @apply text-white bg-[#ec1f24] px-10 py-3 rounded-md duration-300 cursor-pointer;
   }
   .btn:hover {
     @apply bg-[#c03236];
   }
   .btn-alt {
-    @apply text-[#ec1f24] border border-[#ec1f24] bg-white px-10 py-3 rounded-full duration-300 cursor-pointer;
+    @apply text-[#ec1f24] border border-[#ec1f24] bg-white px-10 py-3 rounded-md duration-300 cursor-pointer;
   }
   .btn-alt:hover {
     @apply bg-[#ec1f24] text-white;
